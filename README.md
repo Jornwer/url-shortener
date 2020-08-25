@@ -1,0 +1,1 @@
+This is a learning application featuring Spring boot, Hibernate, MySQL.

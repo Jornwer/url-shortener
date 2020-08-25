@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link rel="stylesheet" th:href="@{/styles.css}" />
+        <meta charset="UTF-8">
+        <title>Best URL Shortener</title>
+    </head>
+    <body bgcolor="#FAEBD7">
+        <form method="post" th:object="${DataURL}">
+            <input class="fancyInput" type="text" th:field="*{longURL}" placeholder="Enter URL">
+
+            <input class="fancyInput" type="text" th:field="*{shortURL}" placeholder="Enter short URL">
+
+            <button class="fancySubmit" th:type="submit"  >Submit</button>
+        </form>
+    </body>
+</html>

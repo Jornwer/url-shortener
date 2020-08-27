@@ -3,6 +3,8 @@ package com.jornwer.urlshortener.data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLIntegrityConstraintViolationException;
+
 @Service
 public class URLsService {
 
@@ -13,11 +15,12 @@ public class URLsService {
         this.urlsRepository = urlsRepository;
     }
 
-    public String findLongURlByShortURL(String shortURL){
-        return urlsRepository.findLongURlByShortURL(shortURL).orElse(null);
+    public URLs findURlsByShortURL(String shortURL){
+        return urlsRepository.findURlsByShortURL(shortURL).orElse(null);
     }
 
     public URLs saveURLs(URLs urls){
-        return urlsRepository.save(urls);
+        return findURlsByShortURL(urls.getShortURL()) == null ? urlsRepository.save(urls) : null;
     }
+
 }

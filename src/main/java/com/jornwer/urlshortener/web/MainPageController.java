@@ -6,9 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.support.SessionStatus;
 
 import javax.validation.Valid;
 
@@ -22,7 +22,7 @@ public class MainPageController {
         this.urlsService = urlsService;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public String showMainForm(Model model){
         model.addAttribute("URLs", new URLs());
         return "index";
@@ -33,7 +33,13 @@ public class MainPageController {
         if (errors.hasErrors()){
             return "index";
         }
-        urlsService.saveURLs(urls);
-        return "index";
+        if (urlsService.saveURLs(urls) == null) {
+            model.addAttribute("NonUniqueShortURL", true);
+            return "index";
+        } else {
+            return "redirect:/";
+        }
     }
+
+
 }

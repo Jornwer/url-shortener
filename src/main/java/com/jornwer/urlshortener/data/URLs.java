@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Data
@@ -24,6 +25,7 @@ public class URLs {
 
     @NotBlank(message = "URL should be not empty")
     @Size(min = 3, message = "URL should be at least 3 characters")
+    @Pattern(regexp = "[a-zA-Z0-9]+", message = "URL should contain only letters and digits")
     @Column(name = "short_url")
     private String shortURL;
 }

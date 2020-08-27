@@ -1,6 +1,5 @@
 package com.jornwer.urlshortener.web;
 
-import com.jornwer.urlshortener.data.DataURL;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

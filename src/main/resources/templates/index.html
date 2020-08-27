@@ -8,10 +8,21 @@
         <title>Best URL Shortener</title>
     </head>
     <body bgcolor="#FAEBD7">
-        <form method="post" th:object="${DataURL}">
-            <input class="fancyInput" type="text" th:field="*{longURL}" placeholder="Enter URL">
+         <form method="post" th:object="${URLs}">
+             <div th:if="${#fields.hasErrors()}">
+                <p class="validationError">
+                    Please correct the problems below and resubmit.
+                </p>
+             </div>
+             <input class="fancyInput" type="text" th:field="*{longURL}" placeholder="Enter URL">
+             <p class="validationError"
+                   th:if="${#fields.hasErrors('longURL')}"
+                   th:errors="*{longURL}">LongURL Error</p>
 
-            <input class="fancyInput" type="text" th:field="*{shortURL}" placeholder="Enter short URL">
+             <input class="fancyInput" type="text" th:field="*{shortURL}" placeholder="Enter short URL">
+             <p class="validationError"
+                   th:if="${#fields.hasErrors('shortURL')}"
+                   th:errors="*{shortURL}">ShortURL Error</p>
 
             <button class="fancySubmit" th:type="submit"  >Submit</button>
         </form>

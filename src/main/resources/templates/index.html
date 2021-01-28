@@ -8,7 +8,7 @@
         <title>Best URL Shortener</title>
     </head>
     <body bgcolor="#FAEBD7">
-         <form method="post" th:object="${URLs}">
+         <form method="post" th:object="${Urls}">
              <div th:if="${#fields.hasErrors()}">
                 <p class="validationError">
                     Please correct the problems below and resubmit.
@@ -17,15 +17,15 @@
              <div th:if="${NonUniqueShortURL}">
                  <p class="validationError">Use another short url</p>
              </div>
-             <input class="fancyInput" type="text" th:field="*{longURL}" placeholder="Enter URL">
+             <input class="fancyInput" type="text" th:field="*{longUrl}" placeholder="Enter URL">
              <p class="validationError"
-                   th:if="${#fields.hasErrors('longURL')}"
-                   th:errors="*{longURL}">LongURL Error</p>
+                   th:if="${#fields.hasErrors('longUrl')}"
+                   th:errors="*{longUrl}">LongURL Error</p>
 
-             <input class="fancyInput" type="text" th:field="*{shortURL}" placeholder="Enter short URL">
+             <input class="fancyInput" type="text" th:field="*{shortUrl}" placeholder="Enter short URL">
              <p class="validationError"
-                   th:if="${#fields.hasErrors('shortURL')}"
-                   th:errors="*{shortURL}">ShortURL Error</p>
+                   th:if="${#fields.hasErrors('shortUrl')}"
+                   th:errors="*{shortUrl}">ShortURL Error</p>
 
             <button class="fancySubmit" th:type="submit"  >Submit</button>
         </form>
